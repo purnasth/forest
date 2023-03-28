@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idea</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      :root {
+        --primary-color: #003329;
+        --secondary-color: #fff;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-color);
+        min-height: 100vh;
+      }
+      .navigation {
+        position: relative;
+        background-color: var(--secondary-color);
+        width: 400px;
+        height: 70px;
+        /* margin: 0 auto; */
+        border-radius: 10px;
+        /* padding: 20px; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .navigation ul {
+        display: flex;
+        list-style: none;
+        width: 350px;
+        /* gap: 30px; */
+      }
+      .navigation ul li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+      }
+      .navigation ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 1em;
+        font-weight: 500;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+      }
+      .navigation ul li a:hover {
+        color: #f00;
+      }
+
+      .navigation ul li a .icon {
+        font-size: 1.5em;
+        position: relative;
+        line-height: 75px;
+        display: block;
+        text-align: center;
+        color: var(--primary-color);
+        transition: all 0.5s ease;
+      }
+      /* .navigation ul li:hover a .icon {
+        transform: translateY(-35px);
+      } */
+      .navigation ul li.active a .icon,
+      .navigation ul li:hover a .icon {
+        transform: translateY(-35px);
+      }
+
+      .navigation ul li a .text {
+        position: absolute;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+        line-height: 75px;
+        color: var(--primary-color);
+        letter-spacing: 0.05em;
+        transition: all 0.5s ease;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      /* .navigation ul li:hover a .text {
+        opacity: 1;
+        transform: translateY(0px);
+      } */
+
+      .navigation ul li.active a .text,
+      .navigation ul li:hover a .text {
+        opacity: 1;
+        transform: translateY(10px);
+      }
+
+      .indicator {
+        position: absolute;
+        top: -50%;
+        width: 70px;
+        height: 70px;
+        background-color: #ff0;
+        border-radius: 50%;
+        border: solid 5px var(--primary-color);
+        /* transform: translateX(-50px); */
+        transition: all 0.5s ease;
+      }
+      .indicator::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -13.6px;
+        width: 10px;
+        height: 10px;
+        background-color: transparent;
+        border-top-right-radius: 15px;
+        box-shadow: 1px -2.5px 0 1px var(--primary-color);
+      }
+      .indicator::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -13.6px;
+        width: 10px;
+        height: 10px;
+        background-color: transparent;
+        border-top-left-radius: 15px;
+        box-shadow: -1px -2.5px 0 1px var(--primary-color);
+      }
+
+      .navigation ul li:nth-child(1):hover ~ .indicator,
+      .navigation ul li:nth-child(1).active ~ .indicator {
+        transform: translateX(calc(70px * 0));
+      }
+
+      .navigation ul li:nth-child(2):hover ~ .indicator,
+      .navigation ul li:nth-child(2).active ~ .indicator {
+        transform: translateX(calc(70px * 1));
+      }
+
+      /* .navigation ul li:nth-child:hover ~ .indicator,
+      /* .navigation ul li:nth-child(3).active ~ .indicator {
+        transform: translateX(calc(70px * 2));
+      } */
+
+      .navigation ul li:nth-child(4):hover ~ .indicator,
+      .navigation ul li:nth-child(4).active ~ .indicator {
+        transform: translateX(calc(70px * 3));
+      }
+
+      .navigation ul li:nth-child(5):hover ~ .indicator,
+      .navigation ul li:nth-child(5).active ~ .indicator {
+        transform: translateX(calc(70px * 4));
+      }
+
+      .active-logo img {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: solid 5px var(--primary-color);
+        transform: translateY(25px);
+        transition: all 0.5s ease;
+      }
+
+      .active-logo::before {
+        content: "";
+        position: absolute;
+        bottom: 0%;
+        left: -14.75px;
+        width: 15px;
+        height: 15px;
+        background-color: transparent;
+        border-bottom-right-radius: 15px;
+        box-shadow: 4.5px 4.5px 0 4.5px var(--primary-color);
+      }
+      .active-logo::after {
+        content: "";
+        position: absolute;
+        bottom: 0%;
+        right: -14.25px;
+        width: 15px;
+        height: 15px;
+        background-color: transparent;
+        border-bottom-left-radius: 15px;
+        box-shadow: -5px 5px 0 5px var(--primary-color);
+        z-index: -1;
+      }
+
+      .active-logo:hover img {
+        animation: bounce 0.5s ease-in-out;
+      }
+
+      @keyframes bounce {
+        0% {
+          transform: translateY(25px);
+        }
+        50% {
+          transform: translateY(15px);
+          filter: drop-shadow(0 0 10px var(--primary-color));
+        }
+        100% {
+          transform: translateY(25px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navigation">
+      <ul>
+        <li class="list active">
+          <a href="#"
+            ><span class="icon"><i class="fa-solid fa-house"></i></span
+            ><span class="text">Home</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="#"
+            ><span class="icon"><i class="fa-solid fa-user"></i></span
+            ><span class="text">About</span></a
+          >
+        </li>
+        <li class="list active-logo">
+          <a href="#">
+            <img
+              src="https://scontent.fktm10-1.fna.fbcdn.net/v/t1.6435-9/98033188_969754356787359_659998261347614720_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_ohc=Tzi-yJL2KSwAX_5BbhK&_nc_ht=scontent.fktm10-1.fna&oh=00_AfCo-HDyJ1pnmUSSKJy0ZhkZlg9RrbtokuN83pg-MYOpDA&oe=644A1DFA"
+              alt="logo"
+            />
+          </a>
+        </li>
+        <li class="list">
+          <a href="#"
+            ><span class="icon"><i class="fa-solid fa-code"></i></span
+            ><span class="text">Work</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="#"
+            ><span class="icon"><i class="fa-solid fa-phone"></i></span
+            ><span class="text">Call</span></a
+          >
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </nav>
+
+    <script>
+      const list = document.querySelectorAll(".list");
+      function activeLink() {
+        list.forEach((item) => item.classList.remove("active"));
+        this.classList.add("active");
+      }
+      list.forEach((item) => item.addEventListener("click", activeLink));
+    </script>
+  </body>
+</html>

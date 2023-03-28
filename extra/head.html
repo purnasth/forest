@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .navbar {
+        background-color: #003329;
+        /* padding: 20px; */
+        width: 35%;
+        margin: 0 auto;
+        border-radius: 20px;
+        
+      }
+      .navbar ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 40px;
+      }
+      .navbar ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .navbar ul li a:hover {
+        color: #f00;
+      }
+      .logo {
+        position: relative;
+        z-index: 999;
+      }
+      .logo img {
+        object-fit: cover;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        border: solid 5px #fff;
+        transform: translateY(30%);
+      }
+      .logo::before{
+        content: "";
+        position: absolute;
+        bottom: 0%;
+        left: -19.55px;
+        width: 20px;
+        height: 20px;
+        background-color: #003329;
+        /* background-color: red; */
+        border-bottom-right-radius: 100%;
+        box-shadow:8px 5px 0 5px #fff;
+        /* box-shadow: 3px 5px 0 5px #fff; */
+      }
+      .logo::after{
+        content: "";
+        position: absolute;
+        bottom: 0%;
+        right: -19.55px;
+        width: 20px;
+        height: 20px;
+        background-color: #003329;
+        /* background-color: red; */
+        border-bottom-left-radius: 100%;
+        box-shadow:-8px 5px 0 5px #fff;
+        z-index: -1;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <h2 class="logo">
+          <a href=""
+            ><img
+              src="https://scontent.fktm10-1.fna.fbcdn.net/v/t1.6435-9/98033188_969754356787359_659998261347614720_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_ohc=Tzi-yJL2KSwAX_5BbhK&_nc_ht=scontent.fktm10-1.fna&oh=00_AfCo-HDyJ1pnmUSSKJy0ZhkZlg9RrbtokuN83pg-MYOpDA&oe=644A1DFA"
+              alt=""
+          /></a>
+        </h2>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>
